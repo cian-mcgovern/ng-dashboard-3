@@ -128,3 +128,16 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+.devcontainer/devcontainer.env
+
+pure-dash/.angular/cache
+
+pure-dash/dist
+pure-dash/tmp
+
+pure-dash/node_modules
+
+pure-dash/.vscode
+
+pure-dash/coverage

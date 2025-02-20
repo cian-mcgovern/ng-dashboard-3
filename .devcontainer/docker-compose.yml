@@ -1,0 +1,25 @@
+ services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 4200:4200
+    # depends_on:
+    #   - database
+    volumes:
+      - ..:/workspace
+    env_file:
+      - devcontainer.env
+  # database:
+  #   image: cgr.dev/chainguard/postgres:latest
+  #   restart: always
+  #   ports:
+  #     - 5432:5432
+  #   healthcheck:
+  #     test: [ "CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}" ]
+  #     interval: 15s
+  #     timeout: 5s
+  #     retries: 10
+  #   env_file:
+  #     - devcontainer.env
