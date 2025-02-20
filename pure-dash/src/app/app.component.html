@@ -226,7 +226,15 @@
         </defs>
       </svg>
       <h1>Hello, {{ title }}</h1>
-      <p>Congratulations! Your app is running. 🎉</p>
+      <p>Congratulations! Your app is running.</p>
+
+      <p>here</p>
+        <ul>
+          <li *ngFor="let u of users.items">
+            {{u.username}}
+          </li>
+        </ul>
+      
     </div>
     <div class="divider" role="separator" aria-label="Divider"></div>
     <div class="right-side">
