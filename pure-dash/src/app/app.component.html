@@ -227,14 +227,18 @@
       </svg>
       <h1>Hello, {{ title }}</h1>
       <p>Congratulations! Your app is running.</p>
-
-      <p>here</p>
+      <p>users</p>
         <ul>
-          <li *ngFor="let u of users.items">
+          <li *ngFor="let u of users">
             {{u.username}}
           </li>
         </ul>
-      
+        <p>appointments</p>
+        <ul>
+          <li *ngFor="let a of appointments">
+            {{a.appointmentId}}
+          </li>
+        </ul>
     </div>
     <div class="divider" role="separator" aria-label="Divider"></div>
     <div class="right-side">

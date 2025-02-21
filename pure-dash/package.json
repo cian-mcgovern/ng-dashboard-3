@@ -22,6 +22,7 @@
     "@angular/router": "^19.1.0",
     "@angular/ssr": "^19.1.6",
     "express": "^4.18.2",
+    "peoplexd-client": "^0.0.3-beta",
     "pure-client": "^0.0.3-beta",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

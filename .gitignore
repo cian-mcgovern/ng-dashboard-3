@@ -141,3 +141,5 @@ pure-dash/node_modules
 pure-dash/.vscode
 
 pure-dash/coverage
+
+pure-dash/src/assets

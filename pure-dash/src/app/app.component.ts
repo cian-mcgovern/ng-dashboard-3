@@ -1,13 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { RouterOutlet } from '@angular/router';
-import { PureClient } from 'pure-client'
-import { Observable } from 'rxjs';
+import { PureClientService } from './pure-client.service';
+import { PeopleXdClientService } from './peoplexd-client.service';
+import { SimpleHttpService } from './simple.http.service';
 
-interface PureUser {
-	username: string
-}
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, CommonModule],
@@ -17,23 +14,52 @@ interface PureUser {
 export class AppComponent {
   	title = 'pure-dash';
 	users: any = [];
-	constructor() {
+	appointments: any = [];
+	
+	constructor(private pureClientService: PureClientService, private peoplexdClientService: PeopleXdClientService, private simpleHttpService: SimpleHttpService) {
 		console.log('hitting here');
+	}
+
+	ngOnInit() {
+
+		this.pureClientService.getUsers().subscribe(
+			{
+				next: (v) => {
+					console.log(v.items);
+					this.users = v.items;
+				},
+				error: (e) => console.error(e),
+				complete: () => console.info('complete') 
+			}
+		);
+
+		// issue with access
+		// this.peoplexdClientService.getAppointments().subscribe(
+		// 	{
+		// 		next: (v) => {
+		// 			console.log(v.data.items);
+		// 			this.appointments = v.data.items;
+		// 		},
+		// 		error: (e) => console.error(e),
+		// 		complete: () => console.info('complete') 
+		// 	}
+		// )
+
+		// authorisation issues (simple http service attempts to get data from people xd without using client)
+		this.simpleHttpService.getData().subscribe(
+			{
+				next: (v) => {
+					console.log(v);
+					console.log(v.items);
+					this.appointments = v.items;
+				},
+				error: (e) => console.error(e),
+				complete: () => console.info('complete') 
+			}
+		)
 		
 	}
 
-	async ngOnInit() {
-		await this.getPureUsers();
-	  }
-  async getPureUsers() {
-		const url = "";
-		const apiKey = "";
-		const p = new PureClient(url, apiKey);
-		const users = await p.get("users/");
-		console.log("ng onit...");
-		console.log(users);
-		this.users = users;
-  }
-  	
+	
 
 }
